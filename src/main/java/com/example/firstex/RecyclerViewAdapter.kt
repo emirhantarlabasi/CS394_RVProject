@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.firstex.databinding.ItemLayoutBinding
 
 class RecyclerViewAdapter(private val context: Context, private val itemList: List<ItemData>) :
@@ -27,6 +28,11 @@ class RecyclerViewAdapter(private val context: Context, private val itemList: Li
             this.itemData = itemData
             binding.titleText.text = itemData.title
             binding.descriptionText.text = itemData.description
+
+            // Load the smallImageUrl using Glide or another image loading library
+            Glide.with(context)
+                .load(itemData.smallImageUrl)
+                .into(binding.imageView) // Replace imageView with the ID of your ImageView in item_layout.xml
         }
     }
 
