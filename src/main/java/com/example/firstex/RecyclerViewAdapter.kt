@@ -29,10 +29,10 @@ class RecyclerViewAdapter(private val context: Context, private val itemList: Li
             binding.titleText.text = itemData.title
             binding.descriptionText.text = itemData.description
 
-            // Load the smallImageUrl using Glide or another image loading library
+          
             Glide.with(context)
                 .load(itemData.smallImageUrl)
-                .into(binding."@+id/itemImageView") // Replace imageView with the ID of your ImageView in item_layout.xml
+                .into(binding."@+id/itemImageView") 
         }
     }
 
