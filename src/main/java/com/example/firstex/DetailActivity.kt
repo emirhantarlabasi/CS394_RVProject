@@ -23,10 +23,10 @@ class DetailActivity : AppCompatActivity() {
             binding.titleText.text = it.title
             binding.descriptionText.text = it.description
 
-            // Load the largeImageUrl for the detail view
+            
             Glide.with(this)
                 .load(it.largeImageUrl)
-                .into(binding."@+id/titleText") // Replace detailImageView with the ID of your ImageView in activity_detail.xml
+                .into(binding."@+id/detailImageView") 
         }
     }
 }
