@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val itemList = generateSampleData()
+       val itemList = loadMockDataFromAssets()
+
         val adapter = RecyclerViewAdapter(this, itemList)
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
