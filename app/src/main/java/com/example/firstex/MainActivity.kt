@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstex.databinding.ActivityMainBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,15 +24,12 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
     }
 
-    private fun generateSampleData(): List<ItemData> {
-        val names = listOf("Dr", "Rev", "Ms", "Mrs", "Mr")
-        val descriptions = listOf(
-            "Curabitur in libero ut massa volutpat convallis.",
-            "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",
-            "Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor.",
-            "Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris.",
-            "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia."
-        )
+   private fun loadMockDataFromAssets(): List<ItemData> {
+    val inputStream = assets.open("MOCK_DATA.json")
+    val reader = InputStreamReader(inputStream)
+    val itemType = object : TypeToken<List<ItemData>>() {}.type
+    return Gson().fromJson(reader, itemType)
+}
         val imageUrls = listOf(
             "http://example.com/image1.jpg",
             "https://example.com/image2.jpg",
